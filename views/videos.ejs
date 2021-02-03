@@ -1,0 +1,29 @@
+<%- include('header') -%> 
+<div class="container">
+    <% categories.forEach(function(category, i, arr){ -%>
+    <h2><%= category.title %></h2>
+    <div class="row justify-content-between">
+        <% videos.forEach(function(video, j, arr){ -%>
+            <% if (category.videos.includes(video.id)) { %>
+            <div class="col-sm-4">
+                <div class="my-2">
+                    <a href='/video?id=<%=video.id %>' >
+                        <div style="background-image: url('<%=video.poster%>'); background-size: cover; height: 200px;" alt="<%= video.description %>" class="img-fluid card-img-top d-flex align-items-end justify-content-end">
+                            <span class="text-light m-2 p-1" style="background-color: rgba(0, 0, 0, 0.5);"><%= locals.tools.minSecFormat(video.duration) %></span>
+                        </div>
+                        <div>
+                            <h6 class="card-title my-2"><a href='/video?id=<%=video.id %>' ><%= video.title %></a></h6>
+                            <p class="card-text my-2"><%= locals.tools.uploadedFormat(video.created)%></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <% } %>
+        <% }); -%>
+    </div>
+    <span>
+        <hr class=""/>
+    </span>
+    <% }); -%>
+    <%- include('footer') -%> 
+</div>
