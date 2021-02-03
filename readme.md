@@ -1,5 +1,10 @@
 # Vef2 2021, verkefni 1
 
+Til þess að setja upp verkefnið þarf að keyra `npm install`.
+Verkefnið er síðan keyrt með `npm start` sem þýðir sass og keyrir upp `express` vefþjón á porti `3000`.
+
+Síðan er hægt að keyra `npm test` til þess að skoða eslint og stylelint.
+
 [Kynning í fyrirlestri](https://youtu.be/pCEHnurbuCU).
 
 Verkefnið er byggt á [hópverkefni 2 í vefforritun 1, árið 2020](https://github.com/vefforritun/vef1-2020-h2).
