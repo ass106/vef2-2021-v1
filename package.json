@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon -e scss -x \"npm run sass & nodemon app.js\"",
     "start": "node-sass --source-map-embed ./scss/config.scss ./public/styles.css & node app.js",
-    "test": "npx eslint app.js & npx stylelint scss/config.scss",
-    "fix": "npx eslint --fix app.js & npx stylelint ./scss/config.scss  --fix",
+    "test": "npx eslint app.js & npx eslint src/tools.js & npx eslint src/videos.js & npx stylelint scss/config.scss",
+    "fix": "npx eslint --fix app.js & npx eslint --fix src/tools.js & npx eslint --fix src/videos.js & npx stylelint ./scss/config.scss  --fix",
     "watch-code": "nodemon app.js",
     "sass": "node-sass --source-map-embed ./scss/config.scss ./public/styles.css"
   },

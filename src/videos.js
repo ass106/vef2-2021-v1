@@ -8,8 +8,7 @@ const express = require('express');
 const router = express.Router();
 
 /**
- * Kallar á fall og grípur allar runtime villur sem koma upp og heldur áfram niður
- * middleware listann.
+ * Calls a function and catches runtime errors.
  * @param {function} fn
  */
 function catchErrors(fn) {
@@ -17,7 +16,7 @@ function catchErrors(fn) {
 }
 
 /**
- * Les gögn async úr JSON
+ * Reads data from JSON (ASYNC)
  */
 async function readVideos() {
   const file = await readFile('./videos.json');
@@ -26,12 +25,11 @@ async function readVideos() {
 }
 
 /**
- * Route handler sem birtir heimasíðu
- *
- * @param {object} req Request hlutur
- * @param {object} res Respond hlutur
+ * Handler for the main page
+ * @param {object} req Request object
+ * @param {object} res Respond object
  */
-async function list(req, res, next) { 
+async function list(req, res) {
   const json = await readVideos();
   const title = 'Vídeoleigan';
   const {
@@ -42,9 +40,9 @@ async function list(req, res, next) {
 }
 
 /**
- * Finnur myndband í lista sem hefur id id
- * @param {Number} id Id fyrir myndband sem leitað er að
- * @param {object} videos listi af video hlutum
+ * Searches for a video with the id = id
+ * @param {Number} id Id for video being looked for
+ * @param {object} videos A list of video objects
  */
 async function findVideo(id, videos) {
   let videoFound;
@@ -61,9 +59,9 @@ async function findVideo(id, videos) {
 }
 
 /**
- * Route handler sem að birtir síðu fyrir myndbönd
- * @param {object} req Request hlutur
- * @param {object} res Respond hlutur
+ * Handler that shows the page with a video
+ * @param {object} req Request object
+ * @param {object} res Respond object
  * @param {object} next
  */
 async function showVideo(req, res, next) {
